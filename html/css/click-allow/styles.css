@@ -1,0 +1,248 @@
+/* Global Reset and Layout */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Click Overlay Cover */
+.click-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  z-index: 9999; /* Forces this invisible layer to the very front */
+  cursor: pointer;
+}
+
+.page-container {
+  display: flex;
+  width: 100%;
+  max-width: 1100px;
+  height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10%;
+}
+
+/* Left Content Styles */
+.left-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 70%;
+  max-width: 50%;
+}
+
+.main-text {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin-top: 40px;
+}
+
+/* E-CAPTCHA Logo Styles */
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+}
+
+.captcha-icon {
+  width: 55px;
+  height: 55px;
+  border: 12px solid #2b66e3;
+  border-right-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  font-size: 0px; 
+  transform: rotate(-45deg);
+}
+
+.logo-text {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  color: #a0a0a0;
+  letter-spacing: 1px;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+/* Right Content Styles (Robot CSS Artwork) */
+.right-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 45%;
+}
+
+.question-marks {
+  position: absolute;
+  top: -60px;
+  right: 40px;
+  font-family: Arial, sans-serif;
+  font-size: 64px;
+  font-weight: bold;
+  color: #171d4a;
+}
+
+.robot {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: float 4s ease-in-out infinite;
+}
+
+.head {
+  width: 220px;
+  height: 150px;
+  background-color: #2b42e3;
+  border-radius: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.screen {
+  width: 180px;
+  height: 100px;
+  background-color: #111d40;
+  border-radius: 45px;
+  border: 4px solid #4dccff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.eyes {
+  display: flex;
+  justify-content: space-between;
+  width: 90px;
+  margin-bottom: 10px;
+}
+
+.eye {
+  width: 32px;
+  height: 14px;
+  background-color: #ffffff;
+  border-radius: 0 0 16px 16px;
+}
+
+.mouth {
+  width: 24px;
+  height: 10px;
+  border: 4px solid #ffffff;
+  border-bottom: none;
+}
+
+.body {
+  width: 200px;
+  height: 190px;
+  background-color: #2b42e3;
+  border-radius: 40px 40px 100px 100px;
+  margin-top: -20px;
+  z-index: 2;
+  position: relative;
+}
+
+.chest-light {
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, #ffffff 40%, #171d4a 41%);
+  border-radius: 50%;
+  position: absolute;
+  top: 30px;
+  left: 75px;
+}
+
+.belt {
+  width: 170px;
+  height: 35px;
+  background-color: #171d4a;
+  position: absolute;
+  bottom: 50px;
+  z-index: 3;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buckle {
+  width: 25px;
+  height: 45px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  border: 4px solid #171d4a;
+}
+
+.lower-body {
+  width: 110px;
+  height: 80px;
+  background-color: #2b42e3;
+  border-radius: 0 0 60px 60px;
+  margin-top: -5px;
+  z-index: 1;
+}
+
+.left-arm, .right-arm {
+  position: absolute;
+  width: 30px;
+  height: 80px;
+  background-color: #455be3;
+  border-radius: 15px;
+  z-index: 1;
+}
+
+.left-arm {
+  left: -25px;
+  top: 110px;
+  transform: rotate(35deg);
+}
+
+.right-arm {
+  right: -25px;
+  top: 130px;
+  transform: rotate(-15deg);
+}
+
+.shadow {
+  width: 160px;
+  height: 25px;
+  background-color: #d1d1d1;
+  border-radius: 50%;
+  margin-top: 40px;
+  animation: shadowShrink 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes shadowShrink {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.85); opacity: 0.6; }
+}
