@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Custom File Uploader</title>
+  <style>
+    /* Center the layout inside the viewport */
+    body {
+      background-color: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    /* Outer wrapper card */
+    .uploader-card {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      text-align: center;
+      max-width: 350px;
+      width: 100%;
+    }
+
+    /* Card title styling */
+    .uploader-card h3 {
+      margin: 0 0 8px 0;
+      color: #1f2937;
+      font-size: 18px;
+    }
+
+    .uploader-card p {
+      margin: 0 0 24px 0;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    /* Completely hide the native browser input button */
+    .hidden-input {
+      display: none !important;
+    }
+
+    /* Style the custom label as a premium button */
+    .custom-upload-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #4f46e5;
+      color: #ffffff;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+    }
+
+    /* Button hover and click interactions */
+    .custom-upload-btn:hover {
+      background-color: #4338ca;
+    }
+
+    .custom-upload-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* Dynamic area to display selected file name */
+    .file-name-display {
+      margin-top: 16px;
+      font-size: 13px;
+      color: #374151;
+      word-break: break-all;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="uploader-card">
+    <h3>Upload Your Document</h3>
+    <p>Supports PDF, PNG, JPG, or DOCX</p>
+    
+    <!-- Hidden native element -->
+    <input type="file" id="file-upload" class="hidden-input" />
+    
+    <!-- Accessible proxy label containing a dynamic upload icon -->
+    <label for="file-upload" class="custom-upload-btn">
+      <svg xmlns="http://w3.org" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px;">
+        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v2.5a.5.5 0 0 1 .5-.5z"/>
+        <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
+      </svg>
+      Choose a File
+    </label>
+
+    <!-- Placeholder to show the file name inside the DOM -->
+    <div id="file-chosen" class="file-name-display">No file chosen</div>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('file-upload');
+    const fileChosenText = document.getElementById('file-chosen');
+
+    // Updates the placeholder text whenever a user selects a file
+    fileInput.addEventListener('change', function() {
+      if (this.files && this.files.length > 0) {
+        fileChosenText.textContent = `Selected: ${this.files[0].name}`;
+        fileChosenText.style.color = "#059669"; /* Changes text color to green when a file exists */
+      } else {
+        fileChosenText.textContent = "No file chosen";
+        fileChosenText.style.color = "#374151";
+      }
+    });
+  </script>
+
+</body>
+</html>
